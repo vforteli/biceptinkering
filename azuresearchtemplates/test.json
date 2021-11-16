@@ -1,0 +1,3 @@
+{ "somefield": "somevalue1", "someother": "somevotheralue1", "somecomplexfield": { "somecomplexProperty": "somecomplexvalue", "someothercomplexProperty": "somevalue"}}
+{ "somefield": "somevalue2", "someother": "somevotheralue2", "somecomplexfield": { "somecomplexProperty": "somecomplexvalue", "someothercomplexProperty": "somevalue"}}
+{ "somefield": "somevalue3", "someother": "somevotheralue3", "somecomplexfield": { "somecomplexProperty": "somecomplexvalue", "someothercomplexProperty": "somevalue"}}
