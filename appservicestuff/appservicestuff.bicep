@@ -1,6 +1,12 @@
 param AppName string
 param DeployRedis bool = false
+param DeployAppGateway bool = true
 param CustomDomain string = ''
+
+@secure()
+param FrontendCertificatePfxBase64 string = ''
+@secure()
+param FrontendCertificatePassword string = ''
 
 var appServiceName = '${AppName}-appservice'
 var redisCacheName = '${AppName}-rediscache'
@@ -162,6 +168,19 @@ module customDomain 'customDomainModule.bicep' = if (length(CustomDomain) > 0) {
     AppServiceName: appService.name
     CustomDomain: CustomDomain
     ServerFarmId: serverFarm.id
+  }
+}
+
+module appGateway 'appGatewayModule.bicep' = if (length(CustomDomain) > 0 && DeployAppGateway) {
+  name: 'appGateway'
+  dependsOn: [
+    customDomain
+  ]
+  params: {
+    AppServiceName: appService.name
+    CustomDomain: CustomDomain
+    FrontendCertificatePassword: FrontendCertificatePassword
+    FrontendCertificatePfxBase64: FrontendCertificatePfxBase64
   }
 }
 
