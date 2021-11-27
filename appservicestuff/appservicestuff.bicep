@@ -115,13 +115,13 @@ resource appService 'Microsoft.Web/sites@2020-12-01' = {
   properties: {
     httpsOnly: true
     siteConfig: {
-      linuxFxVersion: 'DOTNETCORE|3.1'
+      linuxFxVersion: 'DOTNETCORE|6.0'
       httpLoggingEnabled: true
       detailedErrorLoggingEnabled: true
       appSettings: [
         {
           name: 'SignalRConnectionString'
-          value: 'Endpoint=https://${signalrServiceName}.service.signalr.net;AuthType=aad;'
+          value: 'Endpoint=https://${signalrServiceName}.service.signalr.net;AuthType=aad;Version=1.0;'
         }
         {
           name: 'StorageAccountConnectionString'
